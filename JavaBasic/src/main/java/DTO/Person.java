@@ -3,6 +3,8 @@ package DTO;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * grade<p>Title: Student</p>
  * <p>Description: 学生实体类</p>
@@ -14,17 +16,7 @@ import lombok.Data;
  */
 
 @Data
-@Builder
-public class Student {
-    public Student() {
-    }
-
-    public Student(String name, Integer age, String sex, Integer grade) {
-        this.name = name;
-        this.age = age;
-        this.sex = sex;
-        this.grade = grade;
-    }
+public class Person {
 
     public String name;
 
@@ -33,5 +25,9 @@ public class Student {
     public String sex;
 
     public Integer grade;
+
+    public Integer money;
+
+    public List<Student> products;
 
 }
