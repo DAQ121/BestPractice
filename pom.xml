@@ -5,6 +5,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>JavaBasic</module>
+        <module>MathParser</module>
     </modules>
 
     <parent>
