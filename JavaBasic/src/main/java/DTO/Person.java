@@ -1,7 +1,9 @@
 package DTO;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
@@ -16,6 +18,9 @@ import java.util.List;
  */
 
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Person {
 
     public String name;
@@ -28,6 +33,6 @@ public class Person {
 
     public Integer money;
 
-    public List<Student> products;
+    public List<Student> students;
 
 }

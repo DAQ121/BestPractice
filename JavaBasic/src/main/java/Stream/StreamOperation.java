@@ -25,6 +25,11 @@ public class StreamOperation {
         students.add(Student.builder().name("jieweicheng").age(23).sex("man").grade(89).build());
         students.add(Student.builder().name("jieweicheng").age(23).sex("man").grade(89).build());
 
+        Stream<Object> stream = Stream.builder().add("12").add("qq").build();
+
+
+        Stream.builder().add("12").add("qq").build().forEach(System.out::println);
+
         // 遍历 foreach
         students.forEach(System.out::println);
 
@@ -66,10 +71,7 @@ public class StreamOperation {
         // map: 接收一个函数作为参数，该函数会被应用到每个元素上，并将其映射成一个新的元素。
         List<Integer> list = students.stream().map(x -> x.age + 3).collect(Collectors.toList());
 
-        students.stream().map(x -> {
-            x.age = x.age + 3;
-            return x;
-        }).collect(Collectors.toList()).forEach(System.out::println);
+        students.stream().map(x -> x.age = x.age + 3).collect(Collectors.toList()).forEach(System.out::println);
 
         // flatMap: 接收一个函数作为参数，将流中的每个值都换成另一个流，然后把所有流连接成一个流。
         students.stream().flatMap(x -> {

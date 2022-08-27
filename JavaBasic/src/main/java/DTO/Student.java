@@ -33,5 +33,4 @@ public class Student {
     public String sex;
 
     public Integer grade;
-
 }

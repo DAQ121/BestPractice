@@ -154,7 +154,7 @@ public class TestBeanUtils {
         Person person = new Person();
         final Student daq = Student.builder().name("daq").age(22).build();
         final Student keke = Student.builder().name("keke").age(23).build();
-        person.setProducts(Arrays.asList(daq,keke));
+        person.setStudents(Arrays.asList(daq,keke));
 
         String[] names = BeanUtils.getArrayProperty(person, "products");
 
