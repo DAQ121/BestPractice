@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
  * @author :daiaoqi
  * @version :1.0.0
  */
-public class TestFlatMap {
+public class TestMap {
 
     public static void main(String[] args) {
         List<Student> students = new ArrayList<>();
@@ -34,8 +34,10 @@ public class TestFlatMap {
             return student;
         }).forEach(System.out::println);
 
-        // peek效果和map一样，但是peek接收的是一个consumer表达式，没有返回值
+        // peek效果和map一样,但是peek接收的是一个consumer表达式,没有返回值, peek是唯一能改变原本对象中元素的操作
         students.stream().peek(student -> student.setGrade(student.getGrade() + 100)).forEach(System.out::println);
+
+        students.stream().forEach(System.out::println);
 
         List<Person> persons = new ArrayList<>();
         persons.add(Person.builder().age(12).money(10000).name("daq").sex("nan").students(students).build());
@@ -45,9 +47,5 @@ public class TestFlatMap {
                 .map(Student::getAge)
                 .collect(Collectors.toSet())
                 .forEach(System.out::println);
-
-
-
-
     }
 }
