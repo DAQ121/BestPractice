@@ -1,4 +1,4 @@
-package Stream;
+package Java8.Stream;
 
 import DTO.Student;
 import java.util.*;
@@ -79,6 +79,7 @@ public class StreamOperation {
             Stream<Student> studentStream = students.stream();
             return studentStream;
         }).collect(Collectors.toList()).forEach(System.out::println);
+
 
         // 规约reduce 也称缩减，顾名思义，是把一个流缩减成一个值，能实现对集合求和、求乘积和求最值操作。
         System.out.println(students.stream().reduce((x, y) -> {

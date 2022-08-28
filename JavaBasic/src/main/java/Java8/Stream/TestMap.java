@@ -1,4 +1,4 @@
-package Stream;
+package Java8.Stream;
 
 import DTO.Person;
 import DTO.Student;
