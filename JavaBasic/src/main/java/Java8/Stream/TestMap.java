@@ -35,7 +35,8 @@ public class TestMap {
         }).forEach(System.out::println);
 
         // peek效果和map一样,但是peek接收的是一个consumer表达式,没有返回值, peek是唯一能改变原本对象中元素的操作
-        students.stream().peek(student -> student.setGrade(student.getGrade() + 100)).forEach(System.out::println);
+        students.stream().peek(student -> student.setGrade(student.getGrade() + 100))
+                .forEach(System.out::println);
 
         students.stream().forEach(System.out::println);
 

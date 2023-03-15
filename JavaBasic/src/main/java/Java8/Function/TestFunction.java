@@ -2,8 +2,6 @@ package Java8.Function;
 
 import DTO.Student;
 
-import javax.swing.table.TableRowSorter;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -23,56 +21,58 @@ import java.util.function.Supplier;
  */
 public class TestFunction {
     public static void main(String[] args) {
+
         TestFunction testFunction = new TestFunction();
 
-        System.out.println("测试Consumer消费型函数");
-        testFunction.testConsumer();
+//        System.out.println("-----Consumer消费型函数-----");
+//        testFunction.testConsumer();
 
-        System.out.println("测试Supplier供给型函数");
+        System.out.println("-----Supplier供给型函数-----");
         testFunction.testSupplier();
+//
+//        System.out.println("测试Function函数式接口");
+//        testFunction.testFunc();
+//
+//        System.out.println("测试Predicate");
+//        testFunction.testPredicate();
+//
+//        System.out.println("测试predicate实现的通用过滤");
+//        testFunction.predicateFilter();
+//
 
-        System.out.println("测试Function函数式接口");
-        testFunction.testFunc();
-
-        System.out.println("测试Predicate");
-        testFunction.testPredicate();
-
-        System.out.println("测试predicate实现的通用过滤");
-        testFunction.predicateFilter();
-
-        System.out.println("测试自定义的函数式接口");
-        Student student = Student.builder().name("daiaoqi").age(23).build();
-        testFunction.caustomFunc(student, (s) -> System.out.println("这是自定义的函数式接口实现逻辑"));
-
-
+//        System.out.println("-----自定义的函数式接口-----");
+//        Student student = Student.builder()
+//                .name("daiaoqi")
+//                .age(23)
+//                .build();
+//        testFunction.caustomFunc(student, (stu, count) -> caustomHandle(stu, count));
 
     }
 
     /**
      * @Description Consumer消费型接口
-     * @param
-     * @Return
+     * 先执行action1的消费，再执行action2的消费, action1消费的结果不会影响到action2
+     * 适用于消息处理中，经常在handleMsg中使用，获取到的信息要怎样处理
      */
     public void testConsumer() {
 
-        Consumer<Integer> action1 = i -> {
-            System.out.println(i);
-        };
+        Consumer<Integer> action1 = i -> System.out.println(i + 100);
 
-        Consumer<Integer> action2 = i -> {
-            System.out.println(i + 3);
-        };
+        Consumer<Integer> action2 = this::handleMsg;
 
         // 先执行action1的消费，再执行action2的消费
-        action1.andThen(action2)
-                .accept(3);
+        action1.andThen(action2).accept(3);
 
+    }
+
+    public void handleMsg(Integer msg) {
+        for (int i = 0; i < 10; i++) {
+            System.out.println(msg);
+        }
     }
 
     /**
      * @Description Supplier供给型接口，无参数，有返回值，适合提供数据的场景
-     * @param
-     * @Return
      */
     public void testSupplier() {
         Supplier<Integer> supplier = () -> {
@@ -83,19 +83,26 @@ public class TestFunction {
         System.out.println(supplier.get());
     }
 
+    public String castinttostring(Integer i) {
+        return String.valueOf(i);
+    }
+
     public void testFunc() {
+
         Function<Student, Integer> func1 = (student) -> student.getAge();
 
         Function<Integer, Integer> func2 = (age) -> age + 1;
 
-        Student student = Student.builder().name("daq").age(23).grade(99).build();
+        Student student = Student.builder()
+                .name("daq")
+                .age(23)
+                .grade(99)
+                .build();
 
         // 先执行compose方法参数before中的apply方法，然后将执行结果传递给调用compose函数中的apply方法在执行
         // 如下：先执行func1，在把返回结果当做func2的入参执行。
         System.out.println(func2.compose(func1).apply(student));
 
-        // 如下：先执行func1，在把返回结果当做func2的入参执行。
-        System.out.println(func1.andThen(func2).apply(student));
     }
 
     public void testPredicate() {
@@ -138,7 +145,16 @@ public class TestFunction {
      * @Return
      */
     public void caustomFunc(Student s, MyFunction myFunction) {
-        myFunction.show(s);
+        myFunction.show(s, 3);
+    }
+
+    /**
+     * 自定义函数式接口的处理方法
+     */
+    public static void caustomHandle(Student stu, Integer count) {
+        for (int i = 0; i < count; i++) {
+            System.out.println(stu.getName());
+        }
     }
 
 

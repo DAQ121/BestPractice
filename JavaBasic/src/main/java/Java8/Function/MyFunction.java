@@ -4,5 +4,7 @@ import DTO.Student;
 
 @FunctionalInterface
 public interface MyFunction {
-    void show(Student student);
+
+    void show(Student student, Integer count);
+
 }
