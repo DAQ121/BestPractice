@@ -1,4 +1,4 @@
-package Proxy.Static;
+package proxy;
 
 /**
  * <p>Ti交通方式tle: Car</p>
@@ -9,7 +9,7 @@ package Proxy.Static;
  * @author :daiaoqi
  * @version :1.0.0
  */
-public class Car implements Transportation{
+public class Car implements Transportation {
 
     private String name;
 

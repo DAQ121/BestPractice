@@ -1,4 +1,4 @@
-package Proxy.Static;
+package proxy;
 
 public interface Transportation {
 

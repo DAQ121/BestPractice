@@ -1,22 +1,21 @@
-package Proxy.Dynamic;
+package proxy.Dynamic;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
-import java.util.Arrays;
 
 /**
  * PersonInvocationHandler 类需要实现InvocationHandler接口，这个类中持有一个被代理对象(委托类)的实例target。该类别JDK Proxy类回调
  * 重写了 InvocationHandler 接口中的invoke方法，当一个代理实例的方法被调用时，代理方法将被编码并分发到 invoke 方法执行。
  */
 
-public class PersonInvocationHandler<T> implements InvocationHandler {
+public class DynamicProxy<T> implements InvocationHandler {
 
     /**
      * 被代理对象引用，invoke 方法里面 method 需要使用这个被代理对象
      */
     T target;
 
-    public PersonInvocationHandler(T target) {
+    public DynamicProxy(T target) {
         this.target = target;
     }
 

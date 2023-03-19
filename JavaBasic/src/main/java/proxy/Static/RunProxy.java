@@ -1,4 +1,7 @@
-package Proxy.Static;
+package proxy.Static;
+
+import proxy.Car;
+import proxy.Transportation;
 
 /**
  * <p>Title: RunProxy</p>
@@ -9,7 +12,7 @@ package Proxy.Static;
  * @author :daiaoqi
  * @version :1.0.0
  */
-public class RunProxy implements Transportation{
+public class RunProxy implements Transportation {
 
     private Car car;
 

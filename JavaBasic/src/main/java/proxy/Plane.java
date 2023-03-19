@@ -1,4 +1,4 @@
-package Proxy.Static;
+package proxy;
 
 /**
  * <p>Title: Plane</p>
@@ -9,7 +9,7 @@ package Proxy.Static;
  * @author :daiaoqi
  * @version :1.0.0
  */
-public class Plane implements Transportation{
+public class Plane implements Transportation {
 
     @Override
     public void run() {

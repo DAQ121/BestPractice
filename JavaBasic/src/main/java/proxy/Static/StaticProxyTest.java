@@ -1,4 +1,6 @@
-package Proxy.Static;
+package proxy.Static;
+
+import proxy.Car;
 
 /**
  * <p>Title: Main</p>
@@ -12,6 +14,8 @@ package Proxy.Static;
 public class StaticProxyTest {
 
     public static void main(String[] args) {
+
+        // 一个静态代理类只能代理一个class
         RunProxy proxy = new RunProxy(new Car());
         proxy.run();
     }
